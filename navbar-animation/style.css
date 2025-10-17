@@ -1,4 +1,3 @@
-
 :root{
     --background-color:rgb(32, 32, 32);
     --background-color-body:rgb(172, 172, 172);
@@ -17,48 +16,83 @@ body{
 #sidebar-container{
     display: none;
 }
+.navbar-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding-left: 5%;
+    background-color: var(--background-color);
+}
+.right-container{
+    display: flex;
+}
+.right-container a{
+    padding: 18px;
+    color: white;
+    text-decoration: none;
+}
+.right-container a:hover{
+    background-color: var(--hovering-bg-color);
+    transition: 0.5s linear;
+    
+}
 .open-sidebar{
     display: none;
 }
 .close-sidebar{
     display: none;
 }
-.navbar-container{
-    display: inline;
-    height: 50px;
-    width: 100%;
-    display: flex;
-    background-color: var(--background-color);
-    position: fixed;
-    top:0px;
-    left: 0px;
-    /* flex-direction: column; */
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 10px 10px 0px;
-}
-
-.navbar-container a{
-    height: 50px;
-    padding: 20px 30px;
-    align-items: center;
-    width: auto;
-    text-decoration: none;
-    color: var(--basic-text-color);
-}
-.navbar-container a:hover{
-    background-color: var(--hovering-bg-color);
-    transition:0.4s linear;
-}
 
 @media(max-width:550px){
+    body{
+        position: relative;
+        overflow-x: hidden;
+    }
     .navbar-container{
-        height: 100vh;
         flex-direction: column;
-        width: 250px;
         align-items: flex-start;
         justify-content: flex-start;
+        height: 100vh;
+        width: 200px;
+        position: absolute;
+        right: -200px;
+        
+    }
+    img{
+        display: none;
+    }
+    .right-container{
+        flex-direction: column;
+    }
+    .close-sidebar{
+        display: block;
+        margin: 10px 10px;
+        font-size: 30px;
+        width: 36px;
+        cursor: pointer;
+    }
+    .open-sidebar{
+        display: block;
+        margin: 10px 10px;
+        font-size: 30px;
+        width: 36px;
+        cursor: pointer;
+        position: absolute;
+        right: 0px;
+        color: var(--background-color);
+    }
+    #sidebar-container:checked ~.navbar-container{
+            animation: 0.3s animate linear forwards;
     }
 
-    
+}
+
+@keyframes animate {
+    from{
+
+    }
+    to{
+        right: 0px;
+    }
 }
